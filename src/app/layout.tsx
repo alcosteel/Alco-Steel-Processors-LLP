@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     siteName: "Alco Steel Processors LLP",
   },
   icons: {
-    icon: "/alco-logo-transparent.png",
-    apple: "/alco-logo-transparent.png",
+    icon: "/alco-brand-icon.png",
+    apple: "/alco-brand-icon.png",
   },
 };
 
