@@ -3,17 +3,65 @@
 import React from "react";
 import PageHero from "@/components/layout/PageHero";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export default function Contact() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+  const [formData, setFormData] = React.useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    productType: "Contact Inquiry",
+    quantity: "N/A",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would be an API call to a service like Resend or Nodemailer
-    alert("Thank you! Your message has been sent to marketingalcosteel@gmail.com. Our team will contact you shortly.");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setError(null);
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          productType: "Contact Inquiry",
+          quantity: "N/A",
+          message: "",
+        });
+      } else {
+        setError("Failed to send message. Please try again later.");
+      }
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,47 +142,116 @@ export default function Contact() {
 
             {/* Inquiry Form */}
             <div className="lg:col-span-2">
-              <Card className="border-none shadow-2xl p-8 md:p-12">
-                <h3 className="text-3xl font-bold text-industrial-navy mb-8 font-heading">Send an Inquiry</h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Full Name</label>
-                      <Input placeholder="Enter your name" className="bg-slate-50" required />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Company Name</label>
-                      <Input placeholder="Enter your company" className="bg-slate-50" />
-                    </div>
+              {submitted ? (
+                <Card className="border-none shadow-2xl p-8 md:p-12 bg-white text-center h-full flex flex-col items-center justify-center min-h-[500px]">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle className="text-green-600 w-10 h-10" />
                   </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Email Address</label>
-                      <Input type="email" placeholder="email@company.com" className="bg-slate-50" required />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Phone Number</label>
-                      <Input placeholder="+91 00000 00000" className="bg-slate-50" required />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Product Requirement</label>
-                    <Input placeholder="e.g. 50 Tons of PPGI Coils" className="bg-slate-50" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Message / Details</label>
-                    <Textarea placeholder="Tell us more about your project requirements..." className="min-h-[150px] bg-slate-50" required />
-                  </div>
-                  
-                  <Button type="submit" className="w-full md:w-auto px-12 py-6 bg-accent hover:bg-orange-600 text-white font-bold text-lg shadow-lg">
-                    Send Message
-                    <Send className="ml-2 w-5 h-5" />
+                  <h3 className="text-3xl font-bold text-industrial-navy mb-4 font-heading">Message Sent Successfully!</h3>
+                  <p className="text-slate-600 text-lg mb-8 max-w-md mx-auto">
+                    Thank you for reaching out. Your inquiry has been sent to our marketing team. We will get back to you within 24 hours.
+                  </p>
+                  <Button 
+                    onClick={() => setSubmitted(false)}
+                    className="bg-industrial-navy hover:bg-industrial-blue text-white px-8 py-4 font-bold"
+                  >
+                    Send Another Message
                   </Button>
-                </form>
-              </Card>
+                </Card>
+              ) : (
+                <Card className="border-none shadow-2xl p-8 md:p-12">
+                  <h3 className="text-3xl font-bold text-industrial-navy mb-8 font-heading">Send an Inquiry</h3>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Full Name</label>
+                        <Input 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Enter your name" 
+                          className="bg-slate-50" 
+                          required 
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Company Name</label>
+                        <Input 
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="Enter your company" 
+                          className="bg-slate-50" 
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Email Address</label>
+                        <Input 
+                          name="email"
+                          type="email" 
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="email@company.com" 
+                          className="bg-slate-50" 
+                          required 
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Phone Number</label>
+                        <Input 
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 00000 00000" 
+                          className="bg-slate-50" 
+                          required 
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Product Requirement / Subject</label>
+                      <Input 
+                        name="productType"
+                        value={formData.productType}
+                        onChange={handleChange}
+                        placeholder="e.g. 50 Tons of PPGI Coils" 
+                        className="bg-slate-50" 
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Message / Details</label>
+                      <Textarea 
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us more about your project requirements..." 
+                        className="min-h-[150px] bg-slate-50" 
+                        required 
+                      />
+                    </div>
+                    
+                    {error && (
+                      <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-sm text-sm font-medium">
+                        {error}
+                      </div>
+                    )}
+                    
+                    <Button 
+                      type="submit" 
+                      disabled={loading}
+                      className="w-full md:w-auto px-12 py-6 bg-accent hover:bg-orange-600 text-white font-bold text-lg shadow-lg disabled:opacity-70"
+                    >
+                      {loading ? "Sending..." : "Send Message"}
+                      <Send className="ml-2 w-5 h-5" />
+                    </Button>
+                  </form>
+                </Card>
+              )}
             </div>
           </div>
         </div>

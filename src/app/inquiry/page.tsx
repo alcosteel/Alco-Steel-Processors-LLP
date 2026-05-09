@@ -11,15 +11,53 @@ import PageHero from "@/components/layout/PageHero";
 
 export default function Inquiry() {
   const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+  const [formData, setFormData] = React.useState({
+    productType: "PPGI Coils",
+    quantity: "",
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setError(null);
+      } else {
+        setError("Failed to send inquiry. Please try again later.");
+      }
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 pt-20">
         <div className="container mx-auto px-4 text-center max-w-2xl">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
             <CheckCircle className="text-green-600 w-12 h-12" />
@@ -40,9 +78,7 @@ export default function Inquiry() {
   }
 
   return (
-    <div className="flex flex-col bg-slate-50">
-      
-    
+    <div className="flex flex-col bg-slate-50 pt-20">
       <section className="py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
@@ -58,7 +94,12 @@ export default function Inquiry() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Product Type</label>
-                        <select className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                        <select 
+                          name="productType"
+                          value={formData.productType}
+                          onChange={handleChange}
+                          className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                        >
                           <option>PPGI Coils</option>
                           <option>PPGL Coils</option>
                           <option>Roofing Sheets</option>
@@ -68,7 +109,14 @@ export default function Inquiry() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Estimated Quantity (Tons/Meters)</label>
-                        <Input placeholder="e.g. 50 Tons" className="bg-slate-50" required />
+                        <Input 
+                          name="quantity"
+                          value={formData.quantity}
+                          onChange={handleChange}
+                          placeholder="e.g. 50 Tons" 
+                          className="bg-slate-50" 
+                          required 
+                        />
                       </div>
                     </div>
                   </div>
@@ -81,33 +129,77 @@ export default function Inquiry() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Full Name</label>
-                        <Input placeholder="Your Name" className="bg-slate-50" required />
+                        <Input 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Your Name" 
+                          className="bg-slate-50" 
+                          required 
+                        />
                       </div>
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Company Name</label>
-                        <Input placeholder="Company Name" className="bg-slate-50" required />
+                        <Input 
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="Company Name" 
+                          className="bg-slate-50" 
+                          required 
+                        />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Email Address</label>
-                        <Input type="email" placeholder="email@company.com" className="bg-slate-50" required />
+                        <Input 
+                          name="email"
+                          type="email" 
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="email@company.com" 
+                          className="bg-slate-50" 
+                          required 
+                        />
                       </div>
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Phone Number</label>
-                        <Input placeholder="+91 00000 00000" className="bg-slate-50" required />
+                        <Input 
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 00000 00000" 
+                          className="bg-slate-50" 
+                          required 
+                        />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Technical Specifications / Message</label>
-                    <Textarea placeholder="Describe thickness, width, color (RAL), or any other specific requirements..." className="min-h-[150px] bg-slate-50" />
+                    <Textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Describe thickness, width, color (RAL), or any other specific requirements..." 
+                      className="min-h-[150px] bg-slate-50" 
+                    />
                   </div>
 
                   <div className="pt-6">
-                    <Button type="submit" className="w-full py-8 bg-industrial-navy hover:bg-industrial-blue text-white font-bold text-xl shadow-xl transition-all transform hover:-translate-y-1">
-                      Submit Detailed Inquiry
+                    {error && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-sm text-sm font-medium">
+                        {error}
+                      </div>
+                    )}
+                    <Button 
+                      type="submit" 
+                      disabled={loading}
+                      className="w-full py-8 bg-industrial-navy hover:bg-industrial-blue text-white font-bold text-xl shadow-xl transition-all transform hover:-translate-y-1 disabled:opacity-70"
+                    >
+                      {loading ? "Sending..." : "Submit Detailed Inquiry"}
                     </Button>
                     <p className="text-center text-slate-400 text-xs mt-4">
                       By submitting this form, you agree to our Terms of Service and Privacy Policy.
