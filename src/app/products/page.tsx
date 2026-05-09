@@ -10,7 +10,7 @@ const productCategories = [
     subtitle: "Premium Coated Steel",
     description: "High-quality galvanized steel coated with advanced paint technology, ensuring durability, corrosion resistance, and aesthetic appeal. Our PPGI coils are manufactured using the highest grade cold-rolled steel and premium paint systems to ensure long-lasting performance.",
     image: "/images/product_ppgi.png",
-    specs: ["Thickness: 0.12mm - 1.20mm", "Width: 900mm - 1250mm", "Coating: 60 - 275 GSM", "Paint: RMP, SMP, PVDF"]
+    specs: ["Thickness: 0.12mm - 1.21mm", "Width: 900mm - 1250mm", "Coating: 60 - 275 GSM", "Paint: RMP, SMP, PVDF"]
   },
   {
     id: "ppgl",
