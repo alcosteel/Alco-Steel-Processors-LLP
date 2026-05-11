@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Chatbot from "@/components/ui/Chatbot";
 import { cn } from "@/lib/utils";
 import { MessageCircle } from "lucide-react";
 
@@ -51,7 +52,8 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         
-        {/* Floating WhatsApp CTA */}
+        {/* Chatbot & WhatsApp CTA */}
+        <Chatbot />
         <a
           href="https://wa.me/917039420963"
           target="_blank"
