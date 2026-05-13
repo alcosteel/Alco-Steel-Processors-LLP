@@ -8,10 +8,17 @@ import {
   Wind, 
   Smartphone, 
   Settings, 
-  Shield 
+  Shield, 
+  Link
 } from "lucide-react";
 
 const applications = [
+  {
+    title: "Pre-Engineered Buildings (PEB)",
+    description: "Modern structural steel solutions for industrial sheds, warehouses, and complex commercial buildings.",
+    icon: <Settings className="w-10 h-10" />,
+    image: "/images/peb_application.png"
+  },
   {
     title: "Roofing & Cladding Systems",
     description: "High-durability color coated sheets for modern roofing and wall cladding solutions.",
@@ -73,42 +80,49 @@ export default function Applications() {
 
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {applications.map((app, index) => (
               <div 
                 key={index} 
-                className="group relative h-[400px] overflow-hidden rounded-sm shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="flex flex-col p-8 bg-slate-50 rounded-sm border-l-4 border-accent shadow-lg hover:shadow-xl transition-all group"
               >
-                <Image
-                  src={app.image}
-                  alt={app.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110 brightness-50 group-hover:brightness-75"
-                />
-                <div className="absolute inset-0 p-8 flex flex-col justify-end text-white z-10">
-                  <div className="mb-4 text-accent transition-transform duration-500 group-hover:-translate-y-2">
-                    {app.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold font-heading mb-3 transition-transform duration-500 group-hover:-translate-y-2">
-                    {app.title}
-                  </h3>
-                  <p className="text-sm text-white/80 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 leading-relaxed">
-                    {app.description}
-                  </p>
+                <div className="mb-6 text-industrial-navy group-hover:text-accent transition-colors">
+                  {app.icon}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-industrial-navy via-transparent to-transparent opacity-80" />
+                <h3 className="text-2xl font-bold font-heading text-industrial-navy mb-4">
+                  {app.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {app.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Quote */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold text-industrial-navy font-heading italic">
-            &quot;Delivering Strength, Durability, and Excellence in Steel.&quot;
-          </h2>
+      {/* Global CTA */}
+      <section className="py-24 bg-industrial-navy text-white text-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 font-heading">Designing a Mission-Critical Structure?</h2>
+          <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
+            Our technical team provides end-to-end support for architectural and industrial projects, from material selection to custom profiling.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              href="/inquiry"
+              className="px-12 py-5 bg-accent text-white font-bold rounded-sm text-lg hover:bg-orange-600 transition-all shadow-xl"
+            >
+              Get Technical Consultation
+            </Link>
+            <a
+              href="/Prisma 4 Pager Brochure_FINAL_compressed.pdf"
+              download
+              className="px-12 py-5 border-2 border-white text-white font-bold rounded-sm text-lg hover:bg-white hover:text-industrial-navy transition-all"
+            >
+              Download Prisma® Brochure
+            </a>
+          </div>
         </div>
       </section>
     </div>

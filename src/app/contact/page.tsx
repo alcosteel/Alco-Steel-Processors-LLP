@@ -218,7 +218,7 @@ export default function Contact() {
                         name="productType"
                         value={formData.productType}
                         onChange={handleChange}
-                        placeholder="e.g. 50 Tons of PPGI Coils" 
+                        placeholder="e.g. 50 Tons of PPGL Coils" 
                         className="bg-slate-50" 
                       />
                     </div>

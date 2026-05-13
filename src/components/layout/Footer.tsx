@@ -21,7 +21,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/70 mb-4 leading-relaxed text-[15px]">
-              Premium processors and suppliers of high-quality PPGI, PPGL, and color-coated steel solutions for industrial and commercial infrastructure.
+              Premium processors and suppliers of high-quality PPGL and color-coated steel solutions for industrial and commercial infrastructure.
             </p>
             <p className="text-accent text-[10px] uppercase font-black tracking-[0.3em] mb-6">
               Quality Steel. Reliable Supply. Trusted Partnership.
@@ -72,9 +72,6 @@ export default function Footer() {
               Our Products
             </h4>
             <ul className="space-y-4">
-              <li>
-                <Link href="/products/ppgi" className="text-white/80 hover:text-white transition-colors">PPGI Coils</Link>
-              </li>
               <li>
                 <Link href="/products/ppgl" className="text-white/80 hover:text-white transition-colors">PPGL Coils</Link>
               </li>

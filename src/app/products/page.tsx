@@ -5,28 +5,36 @@ import { ArrowRight, Download } from "lucide-react";
 
 const productCategories = [
   {
-    id: "ppgi",
-    title: "Pre-Painted Galvanized Iron (PPGI)",
-    subtitle: "Premium Coated Steel",
-    description: "High-quality galvanized steel coated with advanced paint technology, ensuring durability, corrosion resistance, and aesthetic appeal. Our PPGI coils are manufactured using the highest grade cold-rolled steel and premium paint systems to ensure long-lasting performance.",
-    image: "/images/product_ppgi.png",
-    specs: ["Thickness: 0.12mm - 1.21mm", "Width: 900mm - 1250mm", "Coating: 60 - 275 GSM", "Paint: RMP, SMP, PVDF"]
-  },
-  {
     id: "ppgl",
     title: "Pre-Painted Galvalume Steel (PPGL)",
-    subtitle: "Advanced Corrosion Resistance",
-    description: "Premium galvalume steel with aluminum-zinc coating combined with paint layers for superior protection and long life. Combining the strength of steel with the corrosion resistance of aluminum and zinc, our PPGL coils offer superior heat reflectivity and durability in harsh environments.",
+    subtitle: "Advanced Aluminum-Zinc Alloy Coating",
+    description: "Premium high-strength galvalume steel with a dual-layered barrier against atmospheric corrosion. Featuring high-grade base material from JSW Steel, these coils offer up to 4 times the life of conventional galvanized steel.",
     image: "/images/product_ppgl.png",
-    specs: ["Thickness: 0.12mm - 1.00mm", "Width: 914mm - 1220mm", "AZ Coating: AZ70 - AZ150", "Superior Heat Reflectivity"]
+    specs: ["Yield Strength: 550 MPA (G550)", "AZ Coating: AZ70 - AZ150 g/m²", "Thickness: 0.12mm - 1.00mm", "Width: 914mm - 1220mm", "Solar Reflectance: > 0.65 SRI"]
+  },
+  {
+    id: "prisma",
+    title: "Prisma® Architectural Steel",
+    subtitle: "Premium Pre-Finished Steel",
+    description: "Colorcoat Prisma® by Tata Steel offers the ultimate in aesthetics and durability. Utilizing Galvalloy® metallic coating, it provides unparalleled corrosion resistance (RC5+) and a life expectancy of up to 40 years.",
+    image: "/images/prisma_architectural.png",
+    specs: ["Substrate: Galvalloy® (95% Zn / 5% Al)", "Coating: 50-70 Microns Nominal", "Resistance: RC5+ Corrosion / RUV5 UV", "Guarantee: Up to 40 Years", "Fire Rating: Class A1"]
   },
   {
     id: "color-coated",
     title: "Color Coated Steel Coils & Sheets",
     subtitle: "Versatile Industrial Solutions",
-    description: "Available in a wide range of colors, thicknesses, and finishes to suit different industrial and architectural applications. Color-coated steel, also known as pre-painted steel, is produced by applying layers of protective paint and coating over galvanized or galvalume steel for maximum longevity and beauty.",
+    description: "Wide range of RAL colors and custom finishes for diverse industrial and architectural needs. Our color-coated steel combines structural strength with advanced paint technology for maximum longevity and color retention.",
     image: "/images/product_sheets.png",
-    specs: ["Available in RAL Colors", "Custom Length Sheets", "Coil & Sheet Form", "Anti-Fading Technology"]
+    specs: ["RAL Color Palette", "Custom Length Sheets", "UV Resistant Coatings", "Anti-Fading Technology"]
+  },
+  {
+    id: "peb",
+    title: "Pre-Engineered Buildings (PEB)",
+    subtitle: "Complete Structural Solutions",
+    description: "High-efficiency building systems designed for rapid construction. Our PEB solutions offer large column-free spans and significant cost savings over conventional construction methods.",
+    image: "/images/peb_application.png",
+    specs: ["Yield Strength: 345 MPa", "Design: IS 800 / MBMA", "Span: Up to 60m Clear", "Assembly: Fully Bolted", "Time: 30-50% Faster"]
   }
 ];
 
@@ -88,10 +96,14 @@ export default function Products() {
                       View Details
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
-                    <button className="inline-flex items-center justify-center px-8 py-3 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white">
+                    <a 
+                      href="/Prisma 4 Pager Brochure_FINAL_compressed.pdf" 
+                      download
+                      className="inline-flex items-center justify-center px-8 py-3 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white"
+                    >
                       <Download className="mr-2 w-4 h-4" />
                       Brochure
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 interface Message {
-  role: "user" | "bot";
+  role: "user" | "assistant";
   content: string;
   timestamp: Date;
   isAction?: boolean;
@@ -25,14 +25,14 @@ const KNOWLEDGE_BASE = {
   },
   products: [
     {
-      name: "PPGI (Pre-Painted Galvanized Iron)",
-      specs: "Thickness: 0.12mm - 1.21mm, Width: 900mm - 1250mm, Coating: 60 - 275 GSM",
-      desc: "High-quality galvanized steel coated with advanced paint technology.",
+      name: "PPGL (Pre-Painted Galvalume Steel)",
+      specs: "Thickness: 0.12mm - 1.00mm, Width: 914mm - 1220mm, Yield Strength: 550 MPA",
+      desc: "Advanced corrosion resistance with superior heat reflectivity.",
     },
     {
-      name: "PPGL (Pre-Painted Galvalume Steel)",
-      specs: "Thickness: 0.12mm - 1.00mm, Width: 914mm - 1220mm, AZ Coating: AZ70 - AZ150",
-      desc: "Advanced corrosion resistance with superior heat reflectivity.",
+      name: "PEB (Pre-Engineered Buildings)",
+      specs: "Custom sizes, high-strength structural steel, quick installation.",
+      desc: "Modern structural steel solutions for industrial and commercial buildings.",
     },
     {
       name: "Color Coated Steel",
@@ -46,9 +46,9 @@ const SIMULATED_RESPONSES: { [key: string]: string } = {
   greeting: "Hello! Welcome to Alco Steel Processor LLP. How can I help you today with your steel requirements?",
   address: `Our facility is located at: ${KNOWLEDGE_BASE.company.address}`,
   contact: `You can reach us at ${KNOWLEDGE_BASE.company.phone} or email us at ${KNOWLEDGE_BASE.company.email}.`,
-  products: "We specialize in PPGI, PPGL, and Color Coated Steel Coils and Sheets. Which one are you interested in?",
-  ppgi: `Our PPGI (Pre-Painted Galvanized Iron) specs: ${KNOWLEDGE_BASE.products[0].specs}. It's known for durability and aesthetic appeal.`,
-  ppgl: `Our PPGL (Pre-Painted Galvalume) specs: ${KNOWLEDGE_BASE.products[1].specs}. It offers superior corrosion resistance.`,
+  products: "We specialize in PPGL, PEB solutions, and Color Coated Steel Coils and Sheets. Which one are you interested in?",
+  ppgl: `Our PPGL (Pre-Painted Galvalume) specs: ${KNOWLEDGE_BASE.products[0].specs}. It offers superior corrosion resistance.`,
+  peb: `Our PEB (Pre-Engineered Buildings) are designed for modern industrial needs with high-strength structural steel.`,
   color: `Our Color Coated steel is available in various RAL colors with anti-fading technology.`,
   thickness: "We process steel with thickness ranging from 0.12mm up to 1.21mm depending on the product type.",
   quality: "We are ISO 9001:2015 certified. Our products undergo rigorous testing including Salt Spray (ASTM B117), T-Bend (ASTM D4145), and Coating Thickness tests.",
@@ -60,14 +60,13 @@ export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
-      role: "bot",
+      role: "assistant",
       content: SIMULATED_RESPONSES.greeting,
       timestamp: new Date(),
     },
   ]);
   const [input, setInput] = useState("");
-  const [repeatCount, setRepeatCount] = useState(0);
-  const [lastQuestion, setLastQuestion] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -77,8 +76,8 @@ export default function Chatbot() {
     }
   }, [messages]);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
     const userMessage: Message = {
       role: "user",
@@ -88,56 +87,42 @@ export default function Chatbot() {
 
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-
-    // Logic for tracking repeat questions
-    if (input.toLowerCase().trim() === lastQuestion.toLowerCase().trim()) {
-      setRepeatCount(prev => prev + 1);
-    } else {
-      setRepeatCount(1);
-      setLastQuestion(input);
-    }
-
-    const userInput = input.toLowerCase();
     setInput("");
+    setIsLoading(true);
 
-    // Simulate Bot Response delay
-    setTimeout(() => {
-      let botContent = SIMULATED_RESPONSES.default;
+    try {
+      const chatHistory = newMessages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
 
-      if (userInput.includes("hello") || userInput.includes("hi")) botContent = SIMULATED_RESPONSES.greeting;
-      else if (userInput.includes("address") || userInput.includes("location") || userInput.includes("where")) botContent = SIMULATED_RESPONSES.address;
-      else if (userInput.includes("contact") || userInput.includes("phone") || userInput.includes("email")) botContent = SIMULATED_RESPONSES.contact;
-      else if (userInput.includes("product") || userInput.includes("what do you sell")) botContent = SIMULATED_RESPONSES.products;
-      else if (userInput.includes("ppgi")) botContent = SIMULATED_RESPONSES.ppgi;
-      else if (userInput.includes("ppgl")) botContent = SIMULATED_RESPONSES.ppgl;
-      else if (userInput.includes("color") || userInput.includes("sheet")) botContent = SIMULATED_RESPONSES.color;
-      else if (userInput.includes("thickness") || userInput.includes("size") || userInput.includes("width")) botContent = SIMULATED_RESPONSES.thickness;
-      else if (userInput.includes("quality") || userInput.includes("test") || userInput.includes("iso")) botContent = SIMULATED_RESPONSES.quality;
-      else if (userInput.includes("cert") || userInput.includes("isi") || userInput.includes("ce")) botContent = SIMULATED_RESPONSES.certifications;
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: chatHistory }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) throw new Error(data.error);
 
       const botMessage: Message = {
-        role: "bot",
-        content: botContent,
+        role: "assistant",
+        content: data.content,
         timestamp: new Date(),
       };
 
-      const finalMessages = [...newMessages, botMessage];
-
-      // Check for 3rd repeat
-      if (repeatCount >= 2) { // Already 2, this is the 3rd time
-        finalMessages.push({
-          role: "bot",
-          content: "It seems you have a specific inquiry. Would you like to fill out our official quotation form or contact us directly for a faster response?",
-          timestamp: new Date(),
-          isAction: true,
-          actionLabel: "Get a Quote",
-          actionLink: "/inquiry",
-        });
-        setRepeatCount(0); // Reset after action
-      }
-
-      setMessages(finalMessages);
-    }, 600);
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Chat Error:", error);
+      setMessages(prev => [...prev, {
+        role: "assistant",
+        content: "I apologize, but I'm having trouble connecting to my systems right now. Please try again or contact us directly at +91 70394 20963.",
+        timestamp: new Date(),
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -207,6 +192,15 @@ export default function Chatbot() {
                   </span>
                 </div>
               ))}
+              {isLoading && (
+                <div className="mr-auto items-start flex flex-col max-w-[85%]">
+                  <div className="p-3 rounded-2xl text-sm bg-white text-industrial-navy border border-slate-100 rounded-tl-none flex gap-1">
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Input Area */}

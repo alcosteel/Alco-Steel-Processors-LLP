@@ -9,32 +9,32 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const products = [
   {
-    title: "PPGI Coils",
-    description: "High-quality galvanized steel coated with advanced paint technology for superior durability.",
-    image: "/images/product_ppgi.png",
-    href: "/products/ppgi",
-    features: ["Corrosion Resistant", "Advanced Coating", "RAL Colors"]
-  },
-  {
     title: "PPGL Coils",
-    description: "Premium galvalume steel with aluminum-zinc coating for exceptional protection and long life.",
+    description: "Advanced aluminum-zinc alloy coated steel from JSW, offering 4x longer life and superior heat reflectivity.",
     image: "/images/product_ppgl.png",
     href: "/products/ppgl",
-    features: ["Alu-Zinc Coating", "Heat Reflective", "2-4x Life"]
+    features: ["Yield 550 MPA", "Solar Reflective", "AZ70-AZ150 Coating"]
+  },
+  {
+    title: "Prisma® Architectural",
+    description: "Premium pre-finished steel by Tata Steel with Galvalloy® coating for extreme durability and aesthetics.",
+    image: "/images/prisma_architectural.png",
+    href: "/products/prisma",
+    features: ["40 Year Guarantee", "RC5+ Corrosion Resistance", "Galvalloy® Technology"]
   },
   {
     title: "Color Coated Sheets",
-    description: "Wide range of colors and finishes to suit different industrial and architectural applications.",
+    description: "Versatile industrial solutions in a wide range of RAL colors with advanced UV resistant coatings.",
     image: "/images/product_sheets.png",
     href: "/products/color-coated",
-    features: ["Weather Proof", "Aesthetic Finish", "Custom Sizes"]
+    features: ["RAL Color Palette", "UV Resistant", "Custom Profiling"]
   },
   {
-    title: "Industrial Coils",
-    description: "High-grade flat steel products processed for manufacturing and engineering sectors.",
-    image: "/images/product_coils.png",
-    href: "/products/color-coated",
-    features: ["Precision Slit", "Uniform Thickness", "Bulk Supply"]
+    title: "PEB Solutions",
+    description: "Modern pre-engineered building systems designed for rapid construction and structural efficiency.",
+    image: "/images/peb_application.png",
+    href: "/products/peb",
+    features: ["345 MPa Primary Frame", "Rapid Assembly", "MBMA Standards"]
   }
 ];
 

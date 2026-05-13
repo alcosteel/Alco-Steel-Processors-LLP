@@ -14,7 +14,7 @@ export default function Inquiry() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [formData, setFormData] = React.useState({
-    productType: "PPGI Coils",
+    productType: "PPGL Coils",
     quantity: "",
     name: "",
     company: "",
@@ -100,11 +100,11 @@ export default function Inquiry() {
                           onChange={handleChange}
                           className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent"
                         >
-                          <option>PPGI Coils</option>
-                          <option>PPGL Coils</option>
-                          <option>Roofing Sheets</option>
-                          <option>Industrial Sheets</option>
-                          <option>Custom Requirement</option>
+                          <option>Pre-Painted Galvalume (PPGL)</option>
+                          <option>Prisma® Architectural Steel</option>
+                          <option>Pre-Engineered Buildings (PEB)</option>
+                          <option>Color Coated Coils & Sheets</option>
+                          <option>Custom Industrial Requirement</option>
                         </select>
                       </div>
                       <div className="space-y-2">

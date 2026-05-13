@@ -37,7 +37,7 @@ export default function Hero() {
               <span className="text-accent italic">Excellence.</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-              Trusted supplier and processor of high-quality PPGI, PPGL, and color-coated steel products. Engineered for modern industrial infrastructure and sustainable growth.
+              Trusted supplier and processor of high-quality PPGL and color-coated steel products. Engineered for modern industrial infrastructure and sustainable growth.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

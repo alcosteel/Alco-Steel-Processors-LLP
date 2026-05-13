@@ -21,8 +21,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Alco Steel Processors LLP | Premium Steel & Roofing Solutions",
-  description: "Alco Steel Processors LLP is a leading manufacturer and processor of high-quality PPGI, PPGL, and color-coated steel products for modern infrastructure.",
-  keywords: ["Steel", "PPGI", "PPGL", "Color Coated Steel", "Industrial Manufacturing", "Roofing", "Cladding", "Alco Steel"],
+  description: "Alco Steel Processors LLP is a leading manufacturer and processor of high-quality PPGL and color-coated steel products for modern infrastructure.",
+  keywords: ["Steel", "PPGL", "Color Coated Steel", "Industrial Manufacturing", "Roofing", "Cladding", "Alco Steel"],
   openGraph: {
     title: "Alco Steel Processors LLP",
     description: "Strength. Durability. Excellence. Premium industrial steel solutions.",

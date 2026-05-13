@@ -42,7 +42,7 @@ export default function Home() {
                 <span className="text-accent">Trusted Partnership.</span>
               </h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Alco Steel Processors LLP is a trusted supplier and processor of high-quality flat steel products. With a strong focus on reliability, quality, and customer satisfaction, we provide premium Pre-Painted Steel (PPGI / PPGL) and Color Coated Steel solutions to a wide range of industries.
+                Alco Steel Processors LLP is a trusted supplier and processor of high-quality flat steel products. With a strong focus on reliability, quality, and customer satisfaction, we provide premium Pre-Painted Steel (PPGL) and Color Coated Steel solutions to a wide range of industries.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">

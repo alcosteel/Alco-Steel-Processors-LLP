@@ -2,14 +2,14 @@ import PageHero from "@/components/layout/PageHero";
 import Image from "next/image";
 
 const galleryItems = [
-  { title: "Industrial Warehouse Roofing", category: "Project", image: "/images/industrial_warehouse_roofing_new.jpg" },
-  { title: "Premium PPGI Coil Stock", category: "Products", image: "/images/product_ppgi.png" },
-  { title: "Modern Factory Cladding", category: "Project", image: "/images/industrial_warehouse_roofing_new.jpg" },
-  { title: "Quality Testing Laboratory", category: "Facility", image: "/images/quality_testing_detail.jpg" },
-  { title: "Custom Profiled Sheets", category: "Products", image: "/images/product_sheets.png" },
-  { title: "Steel Coil Processing", category: "Facility", image: "/images/product_coils.png" },
-  { title: "Commercial Building Shed", category: "Project", image: "/images/commercial_shed.png" },
-  { title: "Surface Finish Inspection", category: "Quality", image: "/images/surface_inspection.png" },
+  { title: "JSW High-Strength PPGL Coils", category: "Products", image: "/images/product_ppgl.png" },
+  { title: "Prisma® Architectural Cladding", category: "Project", image: "/images/prisma_architectural.png" },
+  { title: "Pre-Engineered Warehouse Shed", category: "Project", image: "/images/peb_application.png" },
+  { title: "ISO Certified Testing Facility", category: "Facility", image: "/images/quality_testing_detail.jpg" },
+  { title: "RAL Color Coated Stock", category: "Products", image: "/images/product_sheets.png" },
+  { title: "Industrial Roofing Installation", category: "Project", image: "/images/warehouse_roofing.png" },
+  { title: "Precision Slitting Line", category: "Facility", image: "/images/product_coils.png" },
+  { title: "Surface Inspection & QC", category: "Quality", image: "/images/surface_inspection.png" },
 ];
 
 export default function Gallery() {
@@ -69,7 +69,7 @@ export default function Gallery() {
             </div>
             <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="relative aspect-square rounded-sm overflow-hidden border border-white/10">
-                <Image src="/images/product_ppgi.png" alt="Gallery" fill className="object-cover opacity-50 hover:opacity-100 transition-opacity" />
+                <Image src="/images/product_ppgl.png" alt="Gallery" fill className="object-cover opacity-50 hover:opacity-100 transition-opacity" />
               </div>
               <div className="relative aspect-square rounded-sm overflow-hidden border border-white/10 mt-8">
                 <Image src="/images/infrastructure_new.png" alt="Gallery" fill className="object-cover opacity-50 hover:opacity-100 transition-opacity" />
