@@ -70,7 +70,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ 
       content: response.choices[0].message.content 
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("OpenAI API Error:", error);
     return NextResponse.json(
       { error: "Failed to fetch response from AI" }, 

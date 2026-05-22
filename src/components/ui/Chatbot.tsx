@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { MessageCircle, X, Send, User, Bot, ArrowRight, ExternalLink } from "lucide-react";
+import { MessageCircle, X, Send, Bot, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

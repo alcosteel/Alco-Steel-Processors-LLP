@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import PageHero from "@/components/layout/PageHero";
+
 
 export default function Inquiry() {
   const [submitted, setSubmitted] = React.useState(false);

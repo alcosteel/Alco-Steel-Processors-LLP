@@ -1,5 +1,5 @@
 import PageHero from "@/components/layout/PageHero";
-import Image from "next/image";
+
 import { 
   Home, 
   Factory, 
