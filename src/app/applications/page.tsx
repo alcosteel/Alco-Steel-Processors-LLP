@@ -1,4 +1,6 @@
 import PageHero from "@/components/layout/PageHero";
+import Image from "next/image";
+import Link from "next/link";
 
 import { 
   Home, 
@@ -8,8 +10,7 @@ import {
   Wind, 
   Smartphone, 
   Settings, 
-  Shield, 
-  Link
+  Shield
 } from "lucide-react";
 
 const applications = [
@@ -75,7 +76,7 @@ export default function Applications() {
       <PageHero
         title="Industrial Applications"
         subtitle="Our high-quality steel products are the foundation of excellence across diverse sectors, providing strength and durability where it matters most."
-        imagePath="/images/about_hero_new.png"
+        imagePath="/images/applications_hero_generated.png"
       />
 
       <section className="py-24 bg-white">
@@ -84,17 +85,22 @@ export default function Applications() {
             {applications.map((app, index) => (
               <div 
                 key={index} 
-                className="flex flex-col p-8 bg-slate-50 rounded-sm border-l-4 border-accent shadow-lg hover:shadow-xl transition-all group"
+                className="flex flex-col bg-slate-50 rounded-sm border-l-4 border-accent shadow-lg hover:shadow-xl transition-all overflow-hidden group"
               >
-                <div className="mb-6 text-industrial-navy group-hover:text-accent transition-colors">
-                  {app.icon}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image src={app.image} alt={app.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="text-2xl font-bold font-heading text-industrial-navy mb-4">
-                  {app.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed">
-                  {app.description}
-                </p>
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="mb-6 text-industrial-navy group-hover:text-accent transition-colors">
+                    {app.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold font-heading text-industrial-navy mb-4">
+                    {app.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {app.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

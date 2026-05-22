@@ -8,7 +8,7 @@ export default function About() {
       <PageHero
         title="About Alco Steel"
         subtitle="A trusted supplier and processor of high-quality flat steel products, committed to reliability, quality, and modern infrastructure solutions."
-        imagePath="/images/about_hero_new.png"
+        imagePath="/images/about_hero_v2.png"
       />
 
       {/* Corporate Profile */}
@@ -55,7 +55,7 @@ export default function About() {
             <h2 className="text-4xl font-bold text-industrial-navy font-heading mb-4">Our Strengths</h2>
             <div className="w-24 h-1 bg-accent mx-auto" />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all border-t-4 border-accent">
               <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-6">
@@ -66,7 +66,7 @@ export default function About() {
                 Products sourced from reputed steel manufacturers and tested for consistency and durability to meet the highest industry standards.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all border-t-4 border-industrial-navy">
               <div className="w-12 h-12 bg-industrial-navy/10 rounded-full flex items-center justify-center mb-6">
                 <Globe className="text-industrial-navy w-6 h-6" />
@@ -76,7 +76,7 @@ export default function About() {
                 Strong distribution network ensuring timely delivery across markets, backed by efficient logistics and massive inventory.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all border-t-4 border-accent">
               <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-6">
                 <Users className="text-accent w-6 h-6" />
@@ -86,7 +86,7 @@ export default function About() {
                 We work closely with customers to provide solutions that match their exact requirements, offering customized sizes and specs.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all border-t-4 border-industrial-navy">
               <div className="w-12 h-12 bg-industrial-navy/10 rounded-full flex items-center justify-center mb-6">
                 <Zap className="text-industrial-navy w-6 h-6" />
