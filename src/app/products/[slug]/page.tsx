@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Download, Info } from "lucide-react";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const productData: Record<string, {
   title: string;
@@ -150,13 +149,13 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
   return (
     <div className="flex flex-col">
       {/* Product Hero */}
-      <section className="min-h-screen bg-slate-50 border-b border-slate-200 flex items-center py-20">
+      <section className="min-h-screen lg:min-h-[70vh] bg-slate-50 border-b border-slate-200 flex items-center py-12 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <Link href="/products" className="inline-flex items-center text-sm font-bold text-slate-500 hover:text-accent mb-8 transition-colors">
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back to Products
           </Link>
-          <div className="flex flex-col lg:flex-row gap-16 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
             <div className="w-full lg:w-1/2">
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
                 <Image src={product.image} alt={product.title} fill className="object-cover" />
@@ -166,25 +165,25 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
               <span className="text-sm font-bold tracking-widest text-accent uppercase mb-4 block font-heading">
                 {product.subtitle}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-industrial-navy mb-6 font-heading leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold text-industrial-navy mb-6 font-heading leading-tight">
                 {product.title}
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed mb-8">
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-8">
                 {product.description}
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
                 <Link
                   href="/inquiry"
-                  className="px-8 py-4 bg-accent text-white font-bold rounded-sm shadow-lg hover:bg-orange-600 transition-all"
+                  className="px-6 py-3.5 md:px-8 md:py-4 bg-accent text-white font-bold rounded-sm shadow-lg hover:bg-orange-600 transition-all text-center text-sm md:text-base w-full sm:w-auto"
                 >
                   Get a Customized Quote
                 </Link>
                 <a 
                   href="/Prisma 4 Pager Brochure_FINAL_compressed.pdf" 
                   download
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white h-auto"
+                  className="inline-flex items-center justify-center px-6 py-3.5 md:px-8 md:py-4 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white h-auto w-full sm:w-auto text-center text-sm md:text-base"
                 >
-                  <Download className="mr-2 w-4 h-4" />
+                  <Download className="mr-2 w-4 h-4 shrink-0" />
                   Product Catalog
                 </a>
               </div>
@@ -195,28 +194,28 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
 
       {/* Detail Info (Only for Color Coated or if infoSection exists) */}
       {product.infoSection && (
-        <section className="py-24 bg-white border-b border-slate-100">
+        <section className="py-12 md:py-24 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="bg-slate-50 p-10 md:p-16 rounded-sm shadow-sm flex flex-col md:flex-row gap-12 items-center">
-              <div className="md:w-2/3">
-                <h2 className="text-3xl font-bold text-industrial-navy font-heading mb-6 flex items-center">
-                  <Info className="mr-3 text-accent" />
+            <div className="bg-slate-50 p-6 sm:p-10 md:p-16 rounded-sm shadow-sm flex flex-col md:flex-row gap-12 items-center">
+              <div className="w-full md:w-2/3">
+                <h2 className="text-2xl md:text-3xl font-bold text-industrial-navy font-heading mb-6 flex items-center">
+                  <Info className="mr-3 text-accent shrink-0" />
                   {product.infoSection.title}
                 </h2>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                <p className="text-base md:text-lg text-slate-600 mb-8 leading-relaxed">
                   {product.infoSection.content}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {product.infoSection.points.map((point: string, i: number) => (
-                    <div key={i} className="flex items-center text-industrial-navy font-bold">
-                      <CheckCircle2 className="text-accent w-5 h-5 mr-3" />
+                    <div key={i} className="flex items-center text-industrial-navy font-bold text-sm md:text-base">
+                      <CheckCircle2 className="text-accent w-5 h-5 mr-3 shrink-0" />
                       {point}
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="md:w-1/3">
-                <div className="relative aspect-square w-full rounded-full border-8 border-white shadow-xl overflow-hidden">
+              <div className="w-full md:w-1/3 flex justify-center">
+                <div className="relative aspect-square w-48 sm:w-64 md:w-full rounded-full border-8 border-white shadow-xl overflow-hidden">
                   <Image src="/images/product_coils.png" alt="Detail" fill className="object-cover" />
                 </div>
               </div>
@@ -227,21 +226,21 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
 
       {/* Brochure Download Section (Specific to Prisma) */}
       {slug === "prisma" && (
-        <section className="py-16 bg-industrial-navy text-white">
+        <section className="py-12 md:py-16 bg-industrial-navy text-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1">
-                <h2 className="text-3xl font-bold font-heading mb-4">Complete Technical Brochure</h2>
-                <p className="text-white/70 text-lg max-w-xl">
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-bold font-heading mb-4">Complete Technical Brochure</h2>
+                <p className="text-white/70 text-base md:text-lg max-w-xl mx-auto md:mx-0">
                   Download the full 4-page technical brochure for Colorcoat Prisma® including detailed color charts, performance data, and standard compliance details.
                 </p>
               </div>
               <a 
                 href="/Prisma 4 Pager Brochure_FINAL_compressed.pdf" 
                 download
-                className="inline-flex items-center justify-center px-10 py-5 bg-accent text-white font-bold rounded-sm shadow-2xl hover:bg-orange-600 transition-all text-lg group"
+                className="inline-flex items-center justify-center w-full md:w-auto px-6 py-4 md:px-10 md:py-5 bg-accent text-white font-bold rounded-sm shadow-2xl hover:bg-orange-600 transition-all text-base md:text-lg group"
               >
-                <Download className="mr-3 w-6 h-6 group-hover:animate-bounce" />
+                <Download className="mr-3 w-5 h-5 md:w-6 md:h-6 group-hover:animate-bounce shrink-0" />
                 Download PDF Brochure
               </a>
             </div>
@@ -249,83 +248,93 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
         </section>
       )}
 
-      {/* Product Details Tabs */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <Tabs defaultValue="specifications" className="w-full">
-            <div className="flex flex-col items-center mb-16">
-              <TabsList className="inline-flex h-14 items-center justify-center rounded-full bg-slate-100 p-1.5 shadow-inner">
-                <TabsTrigger 
-                  value="specifications" 
-                  className="px-8 py-3 text-base font-bold rounded-full transition-all data-[active]:bg-white data-[active]:text-accent data-[active]:shadow-sm text-slate-500"
-                >
-                  Specifications
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="benefits" 
-                  className="px-8 py-3 text-base font-bold rounded-full transition-all data-[active]:bg-white data-[active]:text-accent data-[active]:shadow-sm text-slate-500"
-                >
-                  Key Benefits
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="applications" 
-                  className="px-8 py-3 text-base font-bold rounded-full transition-all data-[active]:bg-white data-[active]:text-accent data-[active]:shadow-sm text-slate-500"
-                >
-                  Applications
-                </TabsTrigger>
-              </TabsList>
+      {/* Product Details - Stacked Sections */}
+      <section className="py-16 md:py-24 bg-white border-b border-slate-100">
+        <div className="container mx-auto px-4 md:px-6 space-y-20 md:space-y-28">
+          
+          {/* Specifications Section */}
+          <div className="w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-industrial-navy font-heading mb-4">
+                Technical Specifications
+              </h2>
+              <div className="w-16 h-1 bg-accent mx-auto mb-4 rounded-full" />
+              <p className="text-slate-500 text-sm md:text-base">
+                Detailed technical parameters and quality standards for {product.title}.
+              </p>
             </div>
             
-            <TabsContent value="specifications" className="mt-0 focus-visible:outline-none">
-              <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-sm shadow-2xl overflow-hidden">
-                <Table>
-                  <TableHeader className="bg-industrial-navy">
-                    <TableRow>
-                      <TableHead className="text-white font-bold py-6 px-8 text-lg">Technical Parameter</TableHead>
-                      <TableHead className="text-white font-bold py-6 px-8 text-lg">Value / Specification</TableHead>
+            <div className="w-full max-w-4xl mx-auto bg-white border border-slate-200 rounded-sm shadow-2xl overflow-hidden">
+              <Table>
+                <TableHeader className="bg-industrial-navy">
+                  <TableRow>
+                    <TableHead className="text-white font-bold py-4 md:py-6 px-4 md:px-8 text-base md:text-lg">Technical Parameter</TableHead>
+                    <TableHead className="text-white font-bold py-4 md:py-6 px-4 md:px-8 text-base md:text-lg">Value / Specification</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {product.specs.map((spec, idx: number) => (
+                    <TableRow key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
+                      <TableCell className="font-bold text-industrial-navy py-3.5 md:py-5 px-4 md:px-8 border-r border-slate-100 whitespace-normal md:whitespace-nowrap">{spec.param}</TableCell>
+                      <TableCell className="text-slate-600 py-3.5 md:py-5 px-4 md:px-8 font-medium whitespace-normal md:whitespace-nowrap">{spec.value}</TableCell>
                     </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {product.specs.map((spec, idx: number) => (
-                      <TableRow key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
-                        <TableCell className="font-bold text-industrial-navy py-5 px-8 border-r border-slate-100">{spec.param}</TableCell>
-                        <TableCell className="text-slate-600 py-5 px-8 font-medium">{spec.value}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </TabsContent>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+
+          {/* Key Benefits Section */}
+          <div className="w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-industrial-navy font-heading mb-4">
+                Key Benefits & Advantages
+              </h2>
+              <div className="w-16 h-1 bg-accent mx-auto mb-4 rounded-full" />
+              <p className="text-slate-500 text-sm md:text-base">
+                Why our {product.title} stands out in performance and durability.
+              </p>
+            </div>
             
-            <TabsContent value="benefits" className="mt-0 focus-visible:outline-none">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {product.benefits.map((benefit: string, idx: number) => (
-                  <div key={idx} className="flex flex-col p-8 bg-slate-50 rounded-sm border-t-4 border-accent shadow-lg hover:-translate-y-1 transition-transform">
-                    <CheckCircle2 className="text-accent w-8 h-8 mb-4" />
-                    <span className="text-lg font-bold text-industrial-navy leading-snug">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </TabsContent>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {product.benefits.map((benefit: string, idx: number) => (
+                <div key={idx} className="flex flex-col p-6 md:p-8 bg-slate-50 rounded-sm border-t-4 border-accent shadow-lg hover:-translate-y-1 transition-transform">
+                  <CheckCircle2 className="text-accent w-6 h-6 md:w-8 md:h-8 mb-4 shrink-0" />
+                  <span className="text-base md:text-lg font-bold text-industrial-navy leading-snug">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Applications Section */}
+          <div className="w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-industrial-navy font-heading mb-4">
+                Typical Applications
+              </h2>
+              <div className="w-16 h-1 bg-accent mx-auto mb-4 rounded-full" />
+              <p className="text-slate-500 text-sm md:text-base">
+                Industries and structural projects where {product.title} is highly recommended.
+              </p>
+            </div>
             
-            <TabsContent value="applications" className="mt-0 focus-visible:outline-none">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {product.applications.map((app: string, idx: number) => (
-                  <div key={idx} className="flex items-center space-x-4 p-6 bg-white border border-slate-100 rounded-sm shadow-sm hover:shadow-md transition-all">
-                    <div className="w-2 h-10 bg-accent shrink-0 rounded-full" />
-                    <span className="text-lg font-bold text-industrial-navy leading-snug">{app}</span>
-                  </div>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {product.applications.map((app: string, idx: number) => (
+                <div key={idx} className="flex items-center space-x-4 p-5 md:p-6 bg-white border border-slate-100 rounded-sm shadow-sm hover:shadow-md transition-all">
+                  <div className="w-1.5 md:w-2 h-8 md:h-10 bg-accent shrink-0 rounded-full" />
+                  <span className="text-base md:text-lg font-bold text-industrial-navy leading-snug">{app}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* Related Products Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold text-industrial-navy font-heading mb-12">Other Premium Products</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-industrial-navy font-heading mb-8 md:mb-12">Other Premium Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {Object.keys(productData).filter(key => key !== slug).map(key => {
               const p = productData[key];
@@ -335,9 +344,9 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
                     <Image src={p.image} alt={p.title} fill className="object-cover transition-transform group-hover:scale-110" />
                   </div>
                   <div className="p-6">
-                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">{p.title}</h4>
+                    <h4 className="text-lg md:text-xl font-bold text-industrial-navy mb-2 font-heading">{p.title}</h4>
                     <p className="text-slate-500 text-sm mb-4 line-clamp-2">{p.description}</p>
-                    <span className="text-accent font-bold flex items-center">
+                    <span className="text-accent font-bold flex items-center text-sm md:text-base">
                       View Details
                       <ArrowLeft className="ml-2 w-4 h-4 rotate-180" />
                     </span>

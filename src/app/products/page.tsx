@@ -48,13 +48,13 @@ export default function Products() {
       />
 
       {/* Products List */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="space-y-24">
+          <div className="space-y-16 md:space-y-24">
             {productCategories.map((product, idx) => (
-              <div key={product.id} className={`flex flex-col ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-16 items-center`}>
+              <div key={product.id} className={`flex flex-col ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}>
                 <div className="w-full lg:w-1/2">
-                  <div className="relative h-[400px] rounded-sm overflow-hidden shadow-2xl group">
+                  <div className="relative h-[250px] sm:h-[350px] md:h-[400px] rounded-sm overflow-hidden shadow-2xl group">
                     <Image
                       src={product.image}
                       alt={product.title}
@@ -66,32 +66,32 @@ export default function Products() {
                 </div>
                 
                 <div className="w-full lg:w-1/2">
-                  <span className="text-sm font-bold tracking-widest text-accent uppercase mb-4 block font-heading">
+                  <span className="text-xs md:text-sm font-bold tracking-widest text-accent uppercase mb-3 md:mb-4 block font-heading">
                     {product.subtitle}
                   </span>
-                  <h2 className="text-4xl font-bold text-industrial-navy mb-6 font-heading">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-industrial-navy mb-4 md:mb-6 font-heading">
                     {product.title}
                   </h2>
-                  <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                  <p className="text-base md:text-lg text-slate-600 mb-6 md:mb-8 leading-relaxed">
                     {product.description}
                   </p>
                   
-                  <div className="mb-10">
-                    <h4 className="text-sm font-bold text-industrial-navy uppercase tracking-wider mb-4">Key Specifications:</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+                  <div className="mb-6 md:mb-10">
+                    <h4 className="text-xs md:text-sm font-bold text-industrial-navy uppercase tracking-wider mb-3 md:mb-4">Key Specifications:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 md:gap-y-3 gap-x-6">
                       {product.specs.map((spec, i) => (
-                        <div key={i} className="flex items-center text-slate-600">
-                          <span className="w-2 h-2 bg-accent mr-3 rounded-full" />
+                        <div key={i} className="flex items-center text-sm md:text-base text-slate-600">
+                          <span className="w-1.5 h-1.5 bg-accent mr-3 rounded-full shrink-0" />
                           {spec}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 w-full">
                     <Link
                       href={`/products/${product.id}`}
-                      className="inline-flex items-center justify-center px-8 py-3 bg-industrial-navy text-white font-bold rounded-sm transition-all hover:bg-industrial-blue shadow-lg"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-industrial-navy text-white font-bold rounded-sm transition-all hover:bg-industrial-blue shadow-lg w-full sm:w-auto text-center text-sm md:text-base"
                     >
                       View Details
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -99,9 +99,9 @@ export default function Products() {
                     <a 
                       href="/Prisma 4 Pager Brochure_FINAL_compressed.pdf" 
                       download
-                      className="inline-flex items-center justify-center px-8 py-3 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white"
+                      className="inline-flex items-center justify-center px-6 py-3 border-2 border-industrial-navy text-industrial-navy font-bold rounded-sm transition-all hover:bg-industrial-navy hover:text-white w-full sm:w-auto text-center text-sm md:text-base"
                     >
-                      <Download className="mr-2 w-4 h-4" />
+                      <Download className="mr-2 w-4 h-4 shrink-0" />
                       Brochure
                     </a>
                   </div>
