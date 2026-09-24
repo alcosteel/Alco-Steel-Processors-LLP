@@ -1,25 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Send, FileText, CheckCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const PROCESSING_REQUIREMENTS = [
+  "Coil Slitting",
+  "Cut-to-Length (CTL)",
+  "Sheet Shearing",
+  "Coil-to-Sheet Conversion",
+  "Toll / Job Work Processing",
+  "Other Custom Requirement",
+];
 
-export default function Inquiry() {
+function InquiryForm() {
+  const searchParams = useSearchParams();
+  const requestedService = searchParams.get("service");
+  const initialRequirement = PROCESSING_REQUIREMENTS.includes(requestedService || "")
+    ? (requestedService as string)
+    : "Coil Slitting";
+
   const [submitted, setSubmitted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [formData, setFormData] = React.useState({
-    productType: "PPGL Coils",
-    quantity: "",
-    name: "",
     company: "",
-    email: "",
+    name: "",
     phone: "",
+    email: "",
+    materialType: "CRCA",
+    thickness: "",
+    width: "",
+    coilWeight: "",
+    quantity: "",
+    processingRequirement: initialRequirement,
+    deliveryLocation: "",
     message: "",
   });
 
@@ -88,34 +108,55 @@ export default function Inquiry() {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-industrial-navy font-heading flex items-center">
-                      <FileText className="mr-3 text-accent" />
-                      Project Information
+                      <Send className="mr-3 text-accent" />
+                      Company & Contact Details
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Product Type</label>
-                        <select 
-                          name="productType"
-                          value={formData.productType}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Company Name</label>
+                        <Input
+                          name="company"
+                          value={formData.company}
                           onChange={handleChange}
-                          className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        >
-                          <option>Pre-Painted Galvalume (PPGL)</option>
-                          <option>Prisma® Architectural Steel</option>
-                          <option>Pre-Engineered Buildings (PEB)</option>
-                          <option>Color Coated Coils & Sheets</option>
-                          <option>Custom Industrial Requirement</option>
-                        </select>
+                          placeholder="Company Name"
+                          className="bg-slate-50"
+                          required
+                        />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Estimated Quantity (Tons/Meters)</label>
-                        <Input 
-                          name="quantity"
-                          value={formData.quantity}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Contact Person</label>
+                        <Input
+                          name="name"
+                          value={formData.name}
                           onChange={handleChange}
-                          placeholder="e.g. 50 Tons" 
-                          className="bg-slate-50" 
-                          required 
+                          placeholder="Your Name"
+                          className="bg-slate-50"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Mobile Number</label>
+                        <Input
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 00000 00000"
+                          className="bg-slate-50"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Email Address</label>
+                        <Input
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="email@company.com"
+                          className="bg-slate-50"
+                          required
                         />
                       </div>
                     </div>
@@ -123,68 +164,113 @@ export default function Inquiry() {
 
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-industrial-navy font-heading flex items-center pt-4 border-t border-slate-100">
-                      <Send className="mr-3 text-accent" />
-                      Contact Details
+                      <FileText className="mr-3 text-accent" />
+                      Processing Requirement
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Full Name</label>
-                        <Input 
-                          name="name"
-                          value={formData.name}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Material Type</label>
+                        <select
+                          name="materialType"
+                          value={formData.materialType}
                           onChange={handleChange}
-                          placeholder="Your Name" 
-                          className="bg-slate-50" 
-                          required 
+                          className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                        >
+                          <option value="CRCA">CRCA</option>
+                          <option value="HR">HR</option>
+                          <option value="GP">GP</option>
+                          <option value="GI">GI</option>
+                          <option value="GPSP">GPSP</option>
+                          <option value="PPGI">PPGI</option>
+                          <option value="PPGL">PPGL</option>
+                          <option value="Stainless Steel">Stainless Steel</option>
+                        </select>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Processing Requirement</label>
+                        <select
+                          name="processingRequirement"
+                          value={formData.processingRequirement}
+                          onChange={handleChange}
+                          className="w-full h-10 px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                        >
+                          <option>Coil Slitting</option>
+                          <option>Cut-to-Length (CTL)</option>
+                          <option>Sheet Shearing</option>
+                          <option>Coil-to-Sheet Conversion</option>
+                          <option>Toll / Job Work Processing</option>
+                          <option>Other Custom Requirement</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Thickness (mm)</label>
+                        <Input
+                          name="thickness"
+                          value={formData.thickness}
+                          onChange={handleChange}
+                          placeholder="e.g. 0.50mm"
+                          className="bg-slate-50"
+                          required
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Company Name</label>
-                        <Input 
-                          name="company"
-                          value={formData.company}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Width (mm)</label>
+                        <Input
+                          name="width"
+                          value={formData.width}
                           onChange={handleChange}
-                          placeholder="Company Name" 
-                          className="bg-slate-50" 
-                          required 
+                          placeholder="e.g. 300mm"
+                          className="bg-slate-50"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Coil Weight</label>
+                        <Input
+                          name="coilWeight"
+                          value={formData.coilWeight}
+                          onChange={handleChange}
+                          placeholder="e.g. 5 Tons"
+                          className="bg-slate-50"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Email Address</label>
-                        <Input 
-                          name="email"
-                          type="email" 
-                          value={formData.email}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Quantity</label>
+                        <Input
+                          name="quantity"
+                          value={formData.quantity}
                           onChange={handleChange}
-                          placeholder="email@company.com" 
-                          className="bg-slate-50" 
-                          required 
+                          placeholder="e.g. 50 Tons"
+                          className="bg-slate-50"
+                          required
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Phone Number</label>
-                        <Input 
-                          name="phone"
-                          value={formData.phone}
+                        <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Delivery Location</label>
+                        <Input
+                          name="deliveryLocation"
+                          value={formData.deliveryLocation}
                           onChange={handleChange}
-                          placeholder="+91 00000 00000" 
-                          className="bg-slate-50" 
-                          required 
+                          placeholder="City / State"
+                          className="bg-slate-50"
+                          required
                         />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Technical Specifications / Message</label>
-                    <Textarea 
+                    <label className="text-xs font-bold text-industrial-navy uppercase tracking-widest">Additional Specifications / Message</label>
+                    <Textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Describe thickness, width, color (RAL), or any other specific requirements..." 
-                      className="min-h-[150px] bg-slate-50" 
+                      placeholder="Describe tolerances, coil ID, edge condition, or any other specific requirements..."
+                      className="min-h-[150px] bg-slate-50"
                     />
                   </div>
 
@@ -194,12 +280,12 @@ export default function Inquiry() {
                         {error}
                       </div>
                     )}
-                    <Button 
-                      type="submit" 
+                    <Button
+                      type="submit"
                       disabled={loading}
                       className="w-full py-8 bg-industrial-navy hover:bg-industrial-blue text-white font-bold text-xl shadow-xl transition-all transform hover:-translate-y-1 disabled:opacity-70"
                     >
-                      {loading ? "Sending..." : "Submit Detailed Inquiry"}
+                      {loading ? "Sending..." : "Submit Processing Requirement"}
                     </Button>
                     <p className="text-center text-slate-400 text-xs mt-4">
                       By submitting this form, you agree to our Terms of Service and Privacy Policy.
@@ -212,5 +298,13 @@ export default function Inquiry() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Inquiry() {
+  return (
+    <Suspense fallback={null}>
+      <InquiryForm />
+    </Suspense>
   );
 }

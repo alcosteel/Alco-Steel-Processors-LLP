@@ -20,12 +20,25 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Alco Steel Processors LLP | Premium Steel & Roofing Solutions",
-  description: "Alco Steel Processors LLP is a leading manufacturer and processor of high-quality PPGL and color-coated steel products for modern infrastructure.",
-  keywords: ["Steel", "PPGL", "Color Coated Steel", "Industrial Manufacturing", "Roofing", "Cladding", "Alco Steel"],
+  title: "Alco Steel Processors LLP | Steel Processing Services Mumbai",
+  description: "Alco Steel Processors LLP delivers precision steel processing services — coil slitting, cut-to-length, shearing, and custom coil conversion — for manufacturers, OEMs, and industrial customers across India.",
+  keywords: [
+    "Steel Processing Services Mumbai",
+    "Steel Processing Services India",
+    "Coil Slitting Services",
+    "Cut To Length Services",
+    "Steel Service Center",
+    "Toll Processing Services",
+    "Job Work Steel Processing",
+    "CRCA Slitting",
+    "GPSP Processing",
+    "Coil Conversion Services",
+    "Steel Coil Processing",
+    "Alco Steel",
+  ],
   openGraph: {
-    title: "Alco Steel Processors LLP",
-    description: "Strength. Durability. Excellence. Premium industrial steel solutions.",
+    title: "Alco Steel Processors LLP | Steel Processing Services",
+    description: "Precision. Reliability. Excellence. Steel processing services for manufacturing industries.",
     type: "website",
     locale: "en_IN",
     siteName: "Alco Steel Processors LLP",

@@ -68,7 +68,7 @@ export default function Contact() {
     <div className="flex flex-col">
       <PageHero
         title="Get in Touch"
-        subtitle="Quality Steel. Reliable Supply. Trusted Partnership. Have questions about our products or need a specialized quote? Our industrial experts are ready to assist you."
+        subtitle="Precision Processing. Reliable Delivery. Trusted Partnership. Have questions about our processing services or need a quote? Our technical team is ready to assist you."
         imagePath="/get in touch image.jpg"
       />
 
@@ -213,13 +213,13 @@ export default function Contact() {
                     </div>
                     
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Product Requirement / Subject</label>
-                      <Input 
+                      <label className="text-sm font-bold text-industrial-navy uppercase tracking-wider">Processing Requirement / Subject</label>
+                      <Input
                         name="productType"
                         value={formData.productType}
                         onChange={handleChange}
-                        placeholder="e.g. 50 Tons of PPGL Coils" 
-                        className="bg-slate-50" 
+                        placeholder="e.g. 50 Tons Coil Slitting Requirement"
+                        className="bg-slate-50"
                       />
                     </div>
                     

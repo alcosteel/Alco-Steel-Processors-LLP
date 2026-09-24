@@ -23,37 +23,37 @@ const KNOWLEDGE_BASE = {
     email: "marketingalcosteel@gmail.com",
     hours: "Mon-Fri: 9 AM - 6 PM, Sat: 10 AM - 2 PM",
   },
-  products: [
+  services: [
     {
-      name: "PPGL (Pre-Painted Galvalume Steel)",
-      specs: "Thickness: 0.12mm - 1.00mm, Width: 914mm - 1220mm, Yield Strength: 550 MPA",
-      desc: "Advanced corrosion resistance with superior heat reflectivity.",
+      name: "Coil Slitting",
+      specs: "Thickness: 0.12mm - 3.00mm, Width: 20mm - 1300mm, Tolerance: ±0.02mm - 0.05mm",
+      desc: "High-precision slitting of steel coils into narrower widths.",
     },
     {
-      name: "PEB (Pre-Engineered Buildings)",
-      specs: "Custom sizes, high-strength structural steel, quick installation.",
-      desc: "Modern structural steel solutions for industrial and commercial buildings.",
+      name: "Cut-to-Length (CTL) Processing",
+      specs: "Custom sheet lengths, precision levelling, consistent flatness.",
+      desc: "Converting coils into precise flat sheets to your specification.",
     },
     {
-      name: "Color Coated Steel",
-      specs: "Available in RAL Colors, Custom Length Sheets, Anti-Fading Technology",
-      desc: "Versatile industrial solutions for architectural applications.",
+      name: "Sheet Shearing",
+      specs: "Clean, burr-free edges matched to your dimensional requirements.",
+      desc: "Accurate shearing services for manufacturing and fabrication.",
     },
   ],
 };
 
 const SIMULATED_RESPONSES: { [key: string]: string } = {
-  greeting: "Hello! Welcome to Alco Steel Processor LLP. How can I help you today with your steel requirements?",
+  greeting: "Hello! Welcome to Alco Steel Processors LLP. How can I help you today with your steel processing requirements?",
   address: `Our facility is located at: ${KNOWLEDGE_BASE.company.address}`,
   contact: `You can reach us at ${KNOWLEDGE_BASE.company.phone} or email us at ${KNOWLEDGE_BASE.company.email}.`,
-  products: "We specialize in PPGL, PEB solutions, and Color Coated Steel Coils and Sheets. Which one are you interested in?",
-  ppgl: `Our PPGL (Pre-Painted Galvalume) specs: ${KNOWLEDGE_BASE.products[0].specs}. It offers superior corrosion resistance.`,
-  peb: `Our PEB (Pre-Engineered Buildings) are designed for modern industrial needs with high-strength structural steel.`,
-  color: `Our Color Coated steel is available in various RAL colors with anti-fading technology.`,
-  thickness: "We process steel with thickness ranging from 0.12mm up to 1.21mm depending on the product type.",
-  quality: "We are ISO 9001:2015 certified. Our products undergo rigorous testing including Salt Spray (ASTM B117), T-Bend (ASTM D4145), and Coating Thickness tests.",
-  certifications: "Alco Steel products are ISO 9001:2015 certified, ISI Marked, and CE Certified, ensuring the highest industrial standards.",
-  default: "I'm not sure I understand that exactly. Could you please clarify? You can also ask about our products, quality standards, or location.",
+  services: "We specialize in Coil Slitting, Cut-to-Length (CTL) Processing, and Sheet Shearing. Which one are you interested in?",
+  slitting: `Our Coil Slitting service: ${KNOWLEDGE_BASE.services[0].specs}. Precision widths for your production line.`,
+  ctl: `Our Cut-to-Length (CTL) Processing is designed for manufacturers needing precise, ready-to-use sheets.`,
+  shearing: `Our Sheet Shearing delivers clean, burr-free edges matched to your dimensional requirements.`,
+  thickness: "We process material with thickness ranging from 0.12mm up to 3.00mm depending on the material type.",
+  quality: "We are ISO 9001:2015 certified. Every batch we process undergoes dimensional, tolerance, and surface quality inspection.",
+  certifications: "Alco Steel Processors LLP is ISO 9001:2015 and MSME certified, ensuring the highest industrial processing standards.",
+  default: "I'm not sure I understand that exactly. Could you please clarify? You can also ask about our processing services, capabilities, or location.",
 };
 
 export default function Chatbot() {
@@ -211,7 +211,7 @@ export default function Chatbot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
-                  placeholder="Ask about products, specs, or contact info..."
+                  placeholder="Ask about services, capabilities, or contact info..."
                   className="w-full pl-4 pr-12 py-3 bg-slate-100 border-none rounded-full text-sm focus:ring-2 focus:ring-accent transition-all outline-none"
                 />
                 <button

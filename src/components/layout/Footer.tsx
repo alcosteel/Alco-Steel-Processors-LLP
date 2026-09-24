@@ -21,10 +21,10 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/70 mb-4 leading-relaxed text-[15px]">
-              Premium processors and suppliers of high-quality PPGL and color-coated steel solutions for industrial and commercial infrastructure.
+              A dedicated steel processing service provider delivering precision slitting, cut-to-length, shearing, and customized coil processing solutions for manufacturers, OEMs, and industrial customers.
             </p>
             <p className="text-accent text-[10px] uppercase font-black tracking-[0.3em] mb-6">
-              Quality Steel. Reliable Supply. Trusted Partnership.
+              Precision Processing. Reliable Delivery. Trusted Partnership.
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="hover:text-accent transition-colors">
@@ -52,13 +52,13 @@ export default function Footer() {
                 <Link href="/about" className="text-white/80 hover:text-white transition-colors">About Us</Link>
               </li>
               <li>
-                <Link href="/products" className="text-white/80 hover:text-white transition-colors">Products</Link>
+                <Link href="/services" className="text-white/80 hover:text-white transition-colors">Processing Services</Link>
               </li>
               <li>
-                <Link href="/applications" className="text-white/80 hover:text-white transition-colors">Applications</Link>
+                <Link href="/applications" className="text-white/80 hover:text-white transition-colors">Industries We Serve</Link>
               </li>
               <li>
-                <Link href="/infrastructure" className="text-white/80 hover:text-white transition-colors">Infrastructure</Link>
+                <Link href="/plant-infrastructure" className="text-white/80 hover:text-white transition-colors">Plant & Infrastructure</Link>
               </li>
               <li>
                 <Link href="/quality" className="text-white/80 hover:text-white transition-colors">Quality Assurance</Link>
@@ -66,17 +66,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Products */}
+          {/* Processing Services */}
           <div>
             <h4 className="text-lg font-bold font-heading mb-6 border-l-2 border-accent pl-3">
-              Our Products
+              Processing Services
             </h4>
             <ul className="space-y-4">
               <li>
-                <Link href="/products/ppgl" className="text-white/80 hover:text-white transition-colors">PPGL Coils</Link>
+                <Link href="/services" className="text-white/80 hover:text-white transition-colors">Coil Slitting</Link>
               </li>
               <li>
-                <Link href="/products/color-coated" className="text-white/80 hover:text-white transition-colors">Color Coated Steel</Link>
+                <Link href="/services" className="text-white/80 hover:text-white transition-colors">Cut-to-Length Processing</Link>
+              </li>
+              <li>
+                <Link href="/capabilities" className="text-white/80 hover:text-white transition-colors">Processing Capabilities</Link>
               </li>
             </ul>
           </div>

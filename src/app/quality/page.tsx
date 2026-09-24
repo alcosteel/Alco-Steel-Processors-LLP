@@ -4,12 +4,12 @@ import { ShieldCheck, Award, Microscope, Ruler, FlaskConical, FileCheck } from "
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const qualityTests = [
-  { test: "Coating Thickness", method: "Magnetic Induction", standard: "ASTM D7091" },
-  { test: "T-Bend Test", method: "Mechanical Bend", standard: "ASTM D4145" },
-  { test: "Salt Spray", method: "Corrosion Chamber", standard: "ASTM B117" },
-  { test: "Pencil Hardness", method: "Gouge Resistance", standard: "ASTM D3363" },
-  { test: "Impact Resistance", method: "Falling Weight", standard: "ASTM D2794" },
-  { test: "Color Consistency", method: "Spectrophotometer", standard: "ISO 11664" },
+  { test: "Dimensional Accuracy", method: "Precision Measurement", standard: "ISO 9001:2015" },
+  { test: "Width Tolerance", method: "Laser Gauging", standard: "In-House SOP" },
+  { test: "Thickness Tolerance", method: "Micrometer Gauging", standard: "ASTM A568" },
+  { test: "Flatness / Camber Check", method: "Levelling Inspection", standard: "In-House SOP" },
+  { test: "Edge & Burr Inspection", method: "Visual & Tactile Check", standard: "In-House SOP" },
+  { test: "Surface Quality", method: "Visual Inspection", standard: "ISO 9001:2015" },
 ];
 
 export default function Quality() {
@@ -18,7 +18,7 @@ export default function Quality() {
       {/* Page Header */}
       <PageHero
         title="Quality Assurance"
-        subtitle="Our quality control protocols ensure every sheet delivered meets the highest global standards. Zero-compromise quality for mission-critical infrastructure."
+        subtitle="Our quality control protocols ensure every processed coil, sheet, and slit strip meets agreed tolerances. Zero-compromise quality for mission-critical manufacturing."
         imagePath="/images/quality_hero_v3.jpg"
       />
 
@@ -50,8 +50,8 @@ export default function Quality() {
                     <Microscope size={28} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">Microscopic Analysis</h4>
-                    <p className="text-slate-600">Continuous surface monitoring for uniform coating distribution and zero-pinhole finish.</p>
+                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">In-Process Monitoring</h4>
+                    <p className="text-slate-600">Continuous monitoring during slitting and shearing for consistent, defect-free processing.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
@@ -59,8 +59,8 @@ export default function Quality() {
                     <Ruler size={28} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">Precision Profiling</h4>
-                    <p className="text-slate-600">Profile accuracy maintained within 0.5mm tolerance to ensure perfect interlocking and leak-proof roofing.</p>
+                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">Precision Processing</h4>
+                    <p className="text-slate-600">Dimensional accuracy maintained within tight tolerances across every slit coil and cut-to-length batch.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
@@ -68,8 +68,8 @@ export default function Quality() {
                     <FlaskConical size={28} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">Chemical Resistance</h4>
-                    <p className="text-slate-600">All pre-painted sheets are tested against industrial pollutants and saline environments.</p>
+                    <h4 className="text-xl font-bold text-industrial-navy mb-2 font-heading">Material Verification</h4>
+                    <p className="text-slate-600">Incoming material is verified for grade and specification before processing begins.</p>
                   </div>
                 </div>
               </div>

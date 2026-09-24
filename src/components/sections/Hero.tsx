@@ -30,29 +30,29 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider text-accent uppercase bg-white/10 backdrop-blur-sm border-l-2 border-accent">
-              Established Excellence in Steel
+              Precision Steel Processing Services
             </span>
             <h1 className="text-5xl md:text-8xl font-bold text-white mb-8 leading-tight font-heading tracking-tighter">
-              Strength. Durability.<br />
+              Precision. Reliability.<br />
               <span className="text-accent italic">Excellence.</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-              Trusted supplier and processor of high-quality PPGL and color-coated steel products. Engineered for modern industrial infrastructure and sustainable growth.
+              Precision steel processing services for manufacturing industries — slitting, cut-to-length, shearing, and custom coil conversion solutions engineered for modern production lines.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/products"
+                href="/services"
                 className="group flex items-center justify-center px-10 py-5 bg-accent text-white font-black uppercase tracking-widest rounded-sm transition-all hover:bg-orange-600 shadow-2xl"
               >
-                Explore Products
+                Explore Our Services
                 <ChevronRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/inquiry"
                 className="flex items-center justify-center px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 font-black uppercase tracking-widest rounded-sm transition-all hover:bg-white/20"
               >
-                Request Quote
+                Request Processing Quote
               </Link>
             </div>
           </motion.div>

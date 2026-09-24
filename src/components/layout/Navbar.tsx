@@ -11,9 +11,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Products", href: "/products" },
-  { name: "Applications", href: "/applications" },
-  { name: "Infrastructure", href: "/infrastructure" },
+  { name: "Services", href: "/services" },
+  { name: "Capabilities", href: "/capabilities" },
+  { name: "Industries", href: "/applications" },
+  { name: "Plant", href: "/plant-infrastructure" },
   { name: "Quality", href: "/quality" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
@@ -64,13 +65,13 @@ export default function Navbar() {
           </div>
 
           {/* Center: Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center space-x-6 xl:space-x-10">
+          <div className="hidden lg:flex items-center justify-center space-x-3 xl:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "text-[15px] font-bold transition-colors hover:text-accent tracking-tight whitespace-nowrap",
+                  "text-[13px] xl:text-[15px] font-bold transition-colors hover:text-accent tracking-tight whitespace-nowrap",
                   isSolid
                     ? pathname === link.href ? "text-accent" : "text-industrial-navy"
                     : pathname === link.href ? "text-white" : "text-white/90"
@@ -86,13 +87,13 @@ export default function Navbar() {
             <Link
               href="/inquiry"
               className={cn(
-                "hidden lg:block px-8 py-3 rounded-sm font-black uppercase tracking-tighter transition-all duration-300 transform hover:scale-105",
+                "hidden lg:block px-4 xl:px-8 py-3 rounded-sm font-black uppercase tracking-tighter transition-all duration-300 transform hover:scale-105 text-xs xl:text-sm whitespace-nowrap",
                 isSolid
                   ? "bg-industrial-navy text-white hover:bg-industrial-blue shadow-xl"
                   : "bg-white text-industrial-navy hover:bg-gray-100"
               )}
             >
-              Get Quote
+              Get Processing Quote
             </Link>
 
             {/* Mobile Toggle */}
@@ -135,7 +136,7 @@ export default function Navbar() {
                 className="bg-accent text-white px-6 py-3 rounded-sm font-bold text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get Quote
+                Get Processing Quote
               </Link>
               <div className="pt-4 border-t border-white/10 flex flex-col space-y-2">
                 <div className="flex items-center text-white/70 text-sm">

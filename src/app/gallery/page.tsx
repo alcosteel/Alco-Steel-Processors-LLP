@@ -2,14 +2,13 @@ import PageHero from "@/components/layout/PageHero";
 import Image from "next/image";
 
 const galleryItems = [
-  { title: "JSW High-Strength PPGL Coils", category: "Products", image: "/images/product_ppgl.png" },
-  { title: "Prisma® Architectural Cladding", category: "Project", image: "/images/prisma_architectural.png" },
-  { title: "Pre-Engineered Warehouse Shed", category: "Project", image: "/images/peb_application.png" },
-  { title: "ISO Certified Testing Facility", category: "Facility", image: "/images/quality_testing_detail.jpg" },
-  { title: "RAL Color Coated Stock", category: "Products", image: "/images/product_sheets.png" },
-  { title: "Industrial Roofing Installation", category: "Project", image: "/images/warehouse_roofing.png" },
-  { title: "Precision Slitting Line", category: "Facility", image: "/images/product_coils.png" },
-  { title: "Surface Inspection & QC", category: "Quality", image: "/images/surface_inspection.png" },
+  { title: "Precision Steel Coil Slitting", category: "Slitting", image: "/images/service_slitting.jpg" },
+  { title: "Cut-to-Length (CTL) Line", category: "Cut-to-Length", image: "/images/service_ctl.jpg" },
+  { title: "Heavy Sheet Shearing Machine", category: "Shearing", image: "/images/service_shearing.jpg" },
+  { title: "Industrial Coil Processing Facility", category: "Coil Processing", image: "/images/service_coil_processing.jpg" },
+  { title: "Custom Steel Conversion Workshop", category: "Custom Conversion", image: "/images/service_custom_conversion.jpg" },
+  { title: "ISO Certified Testing Facility", category: "Quality", image: "/images/quality_testing_detail.jpg" },
+  { title: "Surface Inspection & Quality Control", category: "Quality", image: "/images/surface_inspection.png" },
 ];
 
 export default function Gallery() {
@@ -17,7 +16,7 @@ export default function Gallery() {
     <div className="flex flex-col ">
       <PageHero
         title="Visual Showcase"
-        subtitle="Visualizing our manufacturing excellence, project footprints, and product quality. A glimpse into the world of Alco Steel."
+        subtitle="Visualizing our processing excellence, plant operations, and quality standards. A glimpse into the world of Alco Steel."
         imagePath="/images/gallery_hero_v2.png"
       />
 
@@ -54,16 +53,16 @@ export default function Gallery() {
             <div className="w-full lg:w-1/2">
               <h2 className="text-4xl font-bold font-heading mb-8">Capturing Scale & Precision</h2>
               <p className="text-white/60 mb-8 leading-relaxed text-lg">
-                Our gallery showcases the tangible results of our &quot;Strength. Durability. Excellence.&quot; philosophy. From the massive scale of our processing plant to the minute detail of our steel coatings, we take pride in every visual aspect of our operations.
+                Our gallery showcases the tangible results of our &quot;Precision. Reliability. Excellence.&quot; philosophy. From the scale of our processing plant to the precision of every slit coil, we take pride in every visual aspect of our operations.
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h4 className="text-accent text-3xl font-bold mb-2">10k+</h4>
-                  <p className="text-white/40 text-sm">Projects Delivered</p>
+                  <h4 className="text-accent text-3xl font-bold mb-2">12,000+</h4>
+                  <p className="text-white/40 text-sm">Tons Processed Monthly</p>
                 </div>
                 <div>
                   <h4 className="text-accent text-3xl font-bold mb-2">500+</h4>
-                  <p className="text-white/40 text-sm">Industrial Units</p>
+                  <p className="text-white/40 text-sm">Industrial Customers</p>
                 </div>
               </div>
             </div>

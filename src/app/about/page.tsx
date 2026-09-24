@@ -7,7 +7,7 @@ export default function About() {
     <div className="flex flex-col ">
       <PageHero
         title="About Alco Steel"
-        subtitle="A trusted supplier and processor of high-quality flat steel products, committed to reliability, quality, and modern infrastructure solutions."
+        subtitle="A dedicated steel processing service provider committed to precision, quality, and reliable delivery for manufacturers and industrial customers."
         imagePath="/images/about_hero_v2.png"
       />
 
@@ -20,14 +20,14 @@ export default function About() {
                 Our Profile
               </span>
               <h2 className="text-4xl font-bold text-industrial-navy mb-8 font-heading">
-                Quality Steel. Reliable Supply. <br />
+                Precision Processing. <br />
                 <span className="text-accent">Trusted Partnership.</span>
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Alco Steel Processors LLP is a trusted supplier and processor of high-quality flat steel products. With a strong focus on reliability, quality, and customer satisfaction, we provide premium Pre-Painted Steel (PPGL), Color Coated Steel, and specialized processing services including <strong>Cut-to-Length (CTL) & SLIT</strong> solutions to a wide range of industries.
+                Alco Steel Processors LLP is a steel processing service provider based in Taloja MIDC, Navi Mumbai. We specialize in converting steel coils into customized sheets, strips, slit coils, and cut-to-length sheets as per customer specifications, including <strong>Slitting, Cut-to-Length (CTL), and Shearing</strong> services.
               </p>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                As a trusted supplier and processor of high-quality flat steel products, we ensure our products are sourced from leading manufacturers and processed to meet the highest industry standards. We are committed to delivering durable, aesthetically superior, and performance-driven steel products for modern infrastructure and industrial applications.
+                Our focus is on precision processing, quality assurance, timely deliveries, and supporting OEMs, manufacturers, fabricators, and industrial customers across India.
               </p>
             </div>
             <div className="relative">
@@ -63,7 +63,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-industrial-navy mb-4">Quality Assurance</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Products sourced from reputed steel manufacturers and tested for consistency and durability to meet the highest industry standards.
+                Every processed batch is inspected against agreed tolerances and specifications to meet the highest industry standards.
               </p>
             </div>
 
@@ -71,9 +71,9 @@ export default function About() {
               <div className="w-12 h-12 bg-industrial-navy/10 rounded-full flex items-center justify-center mb-6">
                 <Globe className="text-industrial-navy w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-industrial-navy mb-4">Reliable Supply</h3>
+              <h3 className="text-xl font-bold text-industrial-navy mb-4">Reliable Delivery</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Strong distribution network ensuring timely delivery across markets, backed by efficient logistics and massive inventory.
+                Consistent turnaround and dispatch support ensuring your processed material arrives on schedule.
               </p>
             </div>
 
@@ -83,7 +83,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-industrial-navy mb-4">Customer-Centric</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                We work closely with customers to provide solutions that match their exact requirements, offering customized sizes and specs.
+                We work closely with customers to provide processing solutions that match their exact thickness, width, and quantity requirements.
               </p>
             </div>
 
@@ -91,9 +91,9 @@ export default function About() {
               <div className="w-12 h-12 bg-industrial-navy/10 rounded-full flex items-center justify-center mb-6">
                 <Zap className="text-industrial-navy w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-industrial-navy mb-4">Industry Expertise</h3>
+              <h3 className="text-xl font-bold text-industrial-navy mb-4">Processing Expertise</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Deep understanding of steel products and their applications across sectors, providing technical guidance to our partners.
+                Deep understanding of steel processing and its applications across sectors, providing technical guidance to our partners.
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function About() {
                 Building Long-Term Partnerships Through Performance
               </h3>
               <p className="text-xl text-white/70 leading-relaxed italic mb-8">
-                &quot;At Alco Steel Processors LLP, our mission is to provide customers with high-quality steel products, dependable service, and long-term business relationships built on trust and performance.&quot;
+                &quot;At Alco Steel Processors LLP, our mission is to deliver precision steel processing, dependable service, and long-term business relationships built on trust and performance.&quot;
               </p>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-1 bg-accent" />

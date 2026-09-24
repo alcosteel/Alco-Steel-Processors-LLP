@@ -2,32 +2,38 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Building2, Globe2, ShieldCheck, Users2 } from "lucide-react";
+import { Building2, Globe2, Factory, Users2, PackageCheck } from "lucide-react";
 
 const stats = [
   {
+    icon: <Factory className="w-8 h-8 text-accent" />,
+    value: "1,44,000+",
+    label: "Annual Processing Capacity (Tons)",
+    description: "Scaled to support large recurring orders"
+  },
+  {
     icon: <Users2 className="w-8 h-8 text-accent" />,
     value: "500+",
-    label: "Satisfied Clients",
-    description: "Trusted by major industrial players"
+    label: "Industrial Customers Served",
+    description: "Trusted by manufacturers and OEMs"
+  },
+  {
+    icon: <Building2 className="w-8 h-8 text-accent" />,
+    value: "25+",
+    label: "Years of Experience",
+    description: "Deep roots in the steel processing industry"
+  },
+  {
+    icon: <PackageCheck className="w-8 h-8 text-accent" />,
+    value: "1,44,000+",
+    label: "Tons Processed Annually",
+    description: "Consistent throughput across our processing lines"
   },
   {
     icon: <Globe2 className="w-8 h-8 text-accent" />,
     value: "50+",
     label: "Cities Served",
-    description: "Wide distribution network across India"
-  },
-  {
-    icon: <ShieldCheck className="w-8 h-8 text-accent" />,
-    value: "100%",
-    label: "Quality Assurance",
-    description: "Rigorous testing and standards"
-  },
-  {
-    icon: <Building2 className="w-8 h-8 text-accent" />,
-    value: "25+",
-    label: "Years Experience",
-    description: "Deep roots in the steel industry"
+    description: "Processing dispatch network across India"
   }
 ];
 
@@ -35,7 +41,7 @@ export default function Stats() {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
