@@ -1,10 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
 import PageHero from "@/components/layout/PageHero";
 import Image from "next/image";
 import Link from "next/link";
-import { Factory, Settings, Warehouse, ShieldCheck, PackageCheck, Truck, ConciergeBell, Play, Pause, RotateCcw } from "lucide-react";
+import { Factory, Settings, Warehouse, ShieldCheck, PackageCheck, Truck, ConciergeBell } from "lucide-react";
 
 const facilities = [
   {
@@ -58,8 +55,6 @@ const facilities = [
 ];
 
 export default function PlantInfrastructure() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   return (
     <div className="flex flex-col">
       <PageHero
@@ -113,72 +108,6 @@ export default function PlantInfrastructure() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Plant Video Walkthrough Section */}
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-sm font-bold tracking-widest text-accent uppercase mb-4 block font-heading">
-              Virtual Facility Tour
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Watch Our Processing Facility in Action
-            </h2>
-            <p className="text-white/70 text-lg">
-              Take a virtual walkthrough of our Taloja MIDC plant — witness our EOT cranes, automated slitting lines, CTL machinery, and quality control systems operating in real time.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative rounded-sm overflow-hidden shadow-2xl border border-white/10">
-            <div className="relative aspect-video w-full bg-slate-950">
-              {isPlaying ? (
-                <div className="relative w-full h-full">
-                  <video
-                    src="https://assets.mixkit.co/videos/preview/mixkit-heavy-machinery-operating-in-a-factory-41551-large.mp4"
-                    controls
-                    autoPlay
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                  <button
-                    onClick={() => setIsPlaying(false)}
-                    className="absolute top-4 right-4 bg-black/70 hover:bg-black text-white px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider flex items-center space-x-2 backdrop-blur-md transition-colors z-20"
-                  >
-                    <RotateCcw className="w-4 h-4" />
-                    <span>Close Player</span>
-                  </button>
-                </div>
-              ) : (
-                <div
-                  onClick={() => setIsPlaying(true)}
-                  className="relative w-full h-full group cursor-pointer"
-                >
-                  <Image
-                    src="/images/service_coil_processing.jpg"
-                    alt="Alco Steel Facility Video Preview"
-                    fill
-                    className="object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-industrial-navy/90 via-transparent to-industrial-navy/50" />
-                  
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                    <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 mb-6">
-                      <Play className="w-8 h-8 text-white fill-white ml-1" />
-                    </div>
-                    <span className="text-white font-bold text-xl font-heading mb-2">
-                      Click to Play Plant Operational Video
-                    </span>
-                    <span className="text-white/60 text-sm">
-                      Slitting Line • CTL Line • EOT Crane Handling • QC Inspection
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </section>
